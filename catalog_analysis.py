@@ -92,3 +92,28 @@ def count_long_movies(movies, threshold=120):
             c+=1
 
     return c
+
+# Stage 4
+
+def normalize_title(title):
+    words = []
+    for word in title.split():
+        word = word[0].upper() + word[1:]
+        words.append(word)
+    title = " ".join(words)
+
+    return title
+
+def make_slug(title):
+    words = []
+    for word in title.split():
+        word = word.lower()
+        words.append(word)
+    slug = "-".join(words)
+
+    return slug
+
+def format_report_line(movie):
+    return f'"{movie["title"]}" ({movie["year"]}) - {movie["rating"]}/10, {duration_in_hours(movie["duration_min"])}, жанры: {", ".join(sorted(movie["genres"]))}'
+
+
