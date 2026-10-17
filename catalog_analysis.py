@@ -48,6 +48,8 @@ def duration_in_hours(minutes):
                                                                                                                                                                                              
     return time
 
+# Stage 2
+
 def rating_tier(rating):
     match rating:
         case x if 7<=x<=8.9:
@@ -197,3 +199,19 @@ def genres_only_in_one(movies_a, movies_b):
     unique_a = genres_first - genres_second
 
     return unique_a  
+
+
+# Stage 8 
+
+def iter_high_rated(movies, min_rating=8.0):
+    i = 0
+    while i<len(movies):
+        if movies[i]["rating"] >= min_rating:
+            yield movies[i]
+        i+=1
+
+
+for movie in iter_high_rated(movies):
+    print(format_report_line(movie))
+
+sum(m["duration_min"] for m in movies if m["rating"] > 7)
