@@ -162,3 +162,38 @@ above_average = {
     for n in movies
     if n["rating"] > average_rating(movies)
 }
+
+
+# Stage 7
+
+def all_genres(movies):
+    genres = set()
+    for n in movies:
+        for genre in n["genres"]:
+            genres.add(genre)
+
+    return genres
+
+def common_actors(movie1, movie2):
+    actors_first = set()
+    for n in movie1["actors"]:
+        actors_first.add(n)
+    actors_second = set()
+    for m in movie2["actors"]:
+        actors_second.add(m)
+    common_actors = actors_first & actors_second
+
+    return common_actors
+
+def genres_only_in_one(movies_a, movies_b):
+    genres_first = set()
+    for n in movies_a:
+        for genre in n["genres"]:
+            genres_first.add(genre)
+    genres_second = set()
+    for n in movies_b:
+        for genre in n["genres"]:
+            genres_second.add(genre)
+    unique_a = genres_first - genres_second
+
+    return unique_a  
